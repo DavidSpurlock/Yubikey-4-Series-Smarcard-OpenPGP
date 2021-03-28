@@ -20,7 +20,7 @@ Note: It is strongly recommended that you to generate keys on an offline system,
 Insert the YubiKey into the USB port if it is not already plugged in.
 Enter the GPG command: 
 
-<gpg --expert --full-gen-key>
+gpg --expert --full-gen-key
 
 ## When prompted to specify the key type, enter 1 (for "RSA and RSA (Default)") and press Enter.
 Specify the size of key you want to generate. Do one of the following:
@@ -38,7 +38,8 @@ To add an authentication key:
 Note: Recent release of GnuPG may have the default allowed actions to be both sign and encrypt. Please be sure to check the default allowed action before proceeding with adding the authentication key. 
 
 Insert the YubiKey into the USB port if it is not already plugged in.
-## Enter the GPG command: gpg --expert --edit-key 1234ABC (where 1234ABC is the key ID of your key)
+## Enter the GPG command: 
+gpg --expert --edit-key 1234ABC (where 1234ABC is the key ID of your key)
 ## Enter the command: addkey
 ## Enter the passphrase for the key. Note that this is the passphrase, and not the PIN or admin PIN.
 You are prompted to specify the type of key. Enter 8 for RSA.
@@ -52,9 +53,9 @@ To add a signing key:
 Note: Recent release of GnuPG may have the default allowed actions to be both sign and encrypt. Please be sure to check the default allowed action before proceeding with adding the signing key. 
 
 Enter the GPG command: gpg 
-<--expert --edit-key 1234ABC (where 1234ABC is the key ID of your key) if you are not in edit mode already.>
+--expert --edit-key 1234ABC (where 1234ABC is the key ID of your key) if you are not in edit mode already.
 Enter the command: 
-<addkey>
+addkey
 Enter the passphrase for the key. Note that this is the passphrase, and not the PIN or admin PIN.
 You are prompted to specify the type of key. Enter 8 for RSA.
 Initial default will be Sign and Encrypt. You can either select E to also toggle Encryption as an allowed actions or continue with sign being allowed for the subkey. 
@@ -66,31 +67,31 @@ To create a backup of your key:
 
 Insert the YubiKey into the USB port if it is not already plugged in.
 Enter the GPG command: 
-<gpg --export-secret-key --armor> 1234ABC (where 1234ABC is the key ID of your key)
+gpg --export-secret-key --armor> 1234ABC (where 1234ABC is the key ID of your key
 Store the text output from the command in a safe place ( e.g. Print the text, save the text in password managers, save the text on a USB storage device).
 To import the key on your YubiKey:
 
 Insert the YubiKey into the USB port if it is not already plugged in.
 Enter the GPG command: 
-<gpg --edit-key 1234ABC (where 1234ABC is the key ID of your key)>
+gpg --edit-key 1234ABC (where 1234ABC is the key ID of your key)
 Enter the command: 
-<keytocard>
+keytocard
 When prompted if you really want to move your primary key, enter y (yes).
 When prompted where to store the key, select 1. This will move the signature subkey to the PGP signature slot of the YubiKey.
 Enter the command: 
- <key 1>
+key 1
 Enter the command: 
-  <keytocard>
+keytocard
 When prompted where to store the key, select 2. This will move the encryption subkey to the YubiKey.
 Enter the command: 
-   <key 1>
+   key 1
 Enter the command: 
-    <key 2>
+   key 2
 Enter the command: 
-     <keytocard>
-When prompted where to store the key, select 3. This will move the authentication subkey to the YubiKey.
+     keytocard
+     When prompted where to store the key, select 3. This will move the authentication subkey to the YubiKey.
 Enter the command: 
-      <quit>
+      quit
 When prompted to save your changes, enter y (yes). You have now saved your keyring to your YubiKey.
 Generating Your PGP Key directly on Your YubiKey
 Warning: Generating the PGP on the YubiKey ensures that malware can never steal your PGP private key, but it means that the key can not be backed up so if your YubiKey is lost or damaged the PGP key is irrecoverable. 
@@ -98,7 +99,7 @@ Warning: Generating the PGP on the YubiKey ensures that malware can never steal 
 Insert the YubiKey into the USB port if it is not already plugged in.
 Open Command Prompt (Windows) or Terminal (macOS / Linux).
 Enter the GPG command: 
-<gpg --card-edit>
+gpg --card-edit
 At the gpg/card> prompt, enter the command: admin
 If you want to use keys larger than 2048 bits, run: key-attr
 Enter the command: generate
